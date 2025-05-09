@@ -104,17 +104,30 @@ main {
 
 /* --- Footer --- */
 .app-footer {
-  background: rgba(30,41,59,0.85);
+  background: rgba(30, 41, 59, 0.85);
   color: #fff;
   text-align: center;
   padding: 1rem 0;
   font-size: 1.05rem;
   letter-spacing: 0.5px;
   border-top: 1.5px solid #38bdf8;
-  box-shadow: 0 -2px 16px rgba(30,41,59,0.10);
-  /* Glassmorphism */
-  backdrop-filter: blur(6px);
+  box-shadow: 0 -2px 16px rgba(30, 41, 59, 0.10);
+  backdrop-filter: blur(6px); /* Glassmorphism */
 }
+
+/* Footer Links */
+.app-footer a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.app-footer a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
 
 /* --- Buttons (for use in your components) --- */
 .btn {
