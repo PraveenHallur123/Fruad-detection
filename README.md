@@ -25,7 +25,7 @@ Our AI-powered system alerts you in real-time
 
 - **Frontend:** React.js, HTML5, CSS3, JavaScript
 - **Backend:** Node.js, Express.js
-- **AI/ML:** Deepfake detection APIs (Face/Voice), Lightweight ML models
+- **AI/ML:** system alerts  detection APIs  Lightweight ML models
 - **Deployment:** Netlify (Frontend), Render/Vercel (Backend)
 - **Design:** Figma + Custom UI
 
