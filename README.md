@@ -1,4 +1,5 @@
-# 🛡️ Fraud Detection System (VKYC Deepfake Prevention)
+# 🛡️ Fraud Detection System (tay protected from scam calls, SMS, and emails.
+Our AI-powered system alerts you in real-time)
 
 A secure, real-time AI-powered  fraud detection platformtay protected from scam calls, SMS, and emails.
 Our AI-powered system alerts you in real-time
