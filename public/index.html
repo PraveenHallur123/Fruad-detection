@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fraud Detection App - Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" />
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(135deg, #38bdf8 0%, #1e293b 100%);
+        min-height: 100vh;
+        color: #222;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(30,41,59,0.18);
+        padding: 2.5rem 2rem 2rem 2rem;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .shield {
+        font-size: 4rem;
+        color: #38bdf8;
+        margin-bottom: 0.5rem;
+        animation: pulse 1.5s infinite alternate;
+      }
+      @keyframes pulse {
+        to { text-shadow: 0 0 24px #38bdf888; }
+      }
+      h1 {
+        margin: 0 0 0.5rem 0;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e293b;
+      }
+      .alert-box {
+        background: linear-gradient(90deg, #fee2e2 60%, #fff 100%);
+        border-left: 6px solid #f87171;
+        border-radius: 10px;
+        padding: 1.2rem 1rem;
+        margin: 1.2rem 0;
+        box-shadow: 0 2px 8px rgba(248,113,113,0.08);
+        animation: shake 0.5s;
+      }
+      @keyframes shake {
+        0% { transform: translateX(0); }
+        20% { transform: translateX(-6px); }
+        40% { transform: translateX(6px); }
+        60% { transform: translateX(-4px); }
+        80% { transform: translateX(4px); }
+        100% { transform: translateX(0); }
+      }
+      .alert-title {
+        color: #b91c1c;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      .alert-content {
+        font-family: monospace;
+        background: #fff;
+        border-radius: 6px;
+        padding: 0.5rem 0.7rem;
+        margin-bottom: 0.5rem;
+        color: #1e293b;
+        font-size: 1.02rem;
+      }
+      .highlight {
+        background: #fee2e2;
+        color: #b91c1c;
+        font-weight: bold;
+        border-radius: 4px;
+        padding: 0 2px;
+      }
+      .ai-warning {
+        color: #f87171;
+        font-weight: 500;
+        margin-bottom: 0.7rem;
+        font-size: 1.05rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      .actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1rem;
+      }
+      .btn {
+        border: none;
+        border-radius: 6px;
+        padding: 0.6rem 1.3rem;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .btn-block {
+        background: #f87171;
+        color: #fff;
+      }
+      .btn-block:hover {
+        background: #b91c1c;
+      }
+      .btn-safe {
+        background: #38bdf8;
+        color: #fff;
+      }
+      .btn-safe:hover {
+        background: #0ea5e9;
+      }
+      .result-msg {
+        margin-top: 1.2rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+        border-radius: 6px;
+        padding: 0.6rem 1rem;
+        display: inline-block;
+      }
+      .result-msg.blocked {
+        background: #fee2e2;
+        color: #b91c1c;
+      }
+      .result-msg.safe {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .footer {
+        margin-top: 2rem;
+        color: #64748b;
+        font-size: 0.98rem;
+      }
+      @media (max-width: 500px) {
+        .container {
+          padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+        }
+        h1 { font-size: 1.3rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="shield">🛡️</div>
+      <h1>Fraud Detection Alert</h1>
+      <div class="alert-box" id="alertBox">
+        <div class="alert-title">
+          <span>⚠️ Fraud Alert</span>
+        </div>
+        <div class="alert-content" id="alertContent">
+          From: <b>+1 800-9876</b><br>
+          Message: <span id="messageText"></span>
+        </div>
+        <div class="ai-warning" id="aiWarning">
+          <span>🤖 AI: Suspicious language detected!</span>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-block" id="blockBtn">🚫 Block</button>
+        <button class="btn btn-safe" id="safeBtn">✅ Mark Safe</button>
+      </div>
+      <div id="resultMsg"></div>
+      <div class="footer">
+        Hackathon Demo &copy; 2024 &middot; Fraud Detection App
+      </div>
+    </div>
+    <script>
+      // Simulated message and fraud keyword highlighting
+      const message = "This is your bank. Your account is suspended. Press 1 to verify.";
+      const fraudKeywords = ["bank", "account", "suspended", "verify"];
+      let highlighted = message;
+      fraudKeywords.forEach(kw => {
+        const regex = new RegExp("\\b(" + kw + ")\\b", "gi");
+        highlighted = highlighted.replace(regex, '<span class="highlight">$1</span>');
+      });
+      document.getElementById("messageText").innerHTML = highlighted;
+
+      // Button interactivity
+      document.getElementById("blockBtn").onclick = function() {
+        showResult("Number Blocked! 🚫", "blocked");
+      };
+      document.getElementById("safeBtn").onclick = function() {
+        showResult("Marked as Safe. ✅", "safe");
+      };
+      function showResult(msg, type) {
+        const el = document.getElementById("resultMsg");
+        el.textContent = msg;
+        el.className = "result-msg " + type;
+        setTimeout(() => { el.textContent = ""; el.className = ""; }, 2500);
+      }
+    </script>
+  </body>
+</html>
