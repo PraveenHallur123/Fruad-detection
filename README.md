@@ -45,7 +45,7 @@ Our AI-powered system alerts you in real-time
 ```bash
 git clone https://github.com/PraveenHallur123/Fruad-detection
 
-nstall Dependencies
+install Dependencies
 
 npm install
 
@@ -59,8 +59,10 @@ npm start
 # In server terminal
 node index.js
 
+
 👨‍💻 Developer Info
 Made with ❤️ by Praveen Hallur
 🚀 Project by Mini Project Bytes
+
 
 
