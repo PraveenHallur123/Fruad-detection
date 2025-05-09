@@ -11,11 +11,11 @@ Our AI-powered system alerts you in real-time
 
 ## 🔍 Features
 
-- ✅ Real-time deepfake detection using AI models or APIs
-- 👁️ Live VKYC user verification: face, voice, blink, head motion
+- ✅ Real-timView Alerts using AI models or APIs
+- 👁️ Live system alerts 
 - 🔒 Behavioral biometrics for fraud analysis
 - 📊 Admin dashboard to monitor suspicious attempts
-- 🎥 Deepfake video test simulation
+- 🎥 Frauds test simulation
 - 📱 Mobile friendly interface
 - 🌐 React.js Frontend + Node.js Backend
 
