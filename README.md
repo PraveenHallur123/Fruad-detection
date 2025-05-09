@@ -1,4 +1,4 @@
-# 🛡️ Fraud Detection System (tay protected from scam calls, SMS, and emails.
+# 🛡️ Fraud Detection System (stay protected from scam calls, SMS, and emails.
 Our AI-powered system alerts you in real-time)
 
 A secure, real-time AI-powered  fraud detection platformtay protected from scam calls, SMS, and emails.
