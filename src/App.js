@@ -26,7 +26,11 @@ function App() {
           </Routes>
         </main>
         <footer className="app-footer">
-          <span>Hackathon Demo &copy; 2024</span>
+          <span> FraudDetection &copy; 2025 | 
+  Developed by <a href="https://github.com/PraveenHallur123" target="_blank">Praveen Hallur</a> | 
+  Company: <a href="https://miniprojectbytes.blogspot.com" target="_blank">Mini Project Bytes</a>
+</span>
+
         </footer>
       </div>
     </Router>
