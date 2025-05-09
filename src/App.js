@@ -26,7 +26,7 @@ function App() {
           </Routes>
         </main>
         <footer className="app-footer">
-          <span> FraudDetection &copy; 2025 | 
+          <span> Fraud Detection App &copy; 2025 | 
   Developed by <a href="https://github.com/PraveenHallur123" target="_blank">Praveen Hallur</a> | 
   Company: <a href="https://miniprojectbytes.blogspot.com" target="_blank">Mini Project Bytes</a>
 </span>
