@@ -1,69 +1,186 @@
+
+/* --- Global Styles --- */
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f5f7fa;
+  background: linear-gradient(135deg, #38bdf8 0%, #1e293b 100%);
+  min-height: 100vh;
   color: #222;
+  transition: background 0.5s;
 }
 
+/* --- App Container --- */
 .app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  /* Glassmorphism effect */
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(2px);
 }
 
+/* --- Header --- */
 .app-header {
-  background: #1e293b;
+  background: rgba(30,41,59,0.85);
   color: #fff;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1.5px solid #38bdf8;
+  box-shadow: 0 4px 24px rgba(30,41,59,0.12);
+  position: relative;
+  z-index: 2;
+  /* Glassmorphism */
+  backdrop-filter: blur(6px);
 }
 
 .logo-icon {
-  font-size: 2rem;
-  margin-right: 0.5rem;
+  font-size: 2.3rem;
+  margin-right: 0.7rem;
   color: #38bdf8;
+  filter: drop-shadow(0 0 8px #38bdf8aa);
+  transition: transform 0.2s;
+}
+.logo-icon:hover {
+  transform: scale(1.15) rotate(-8deg);
 }
 
 .logo-text {
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
   margin-right: auto;
+  background: linear-gradient(90deg, #38bdf8 40%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px #0ea5e9aa);
 }
 
+/* --- Navigation --- */
 nav a {
   color: #fff;
-  margin-left: 1.5rem;
+  margin-left: 1.7rem;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
+  font-weight: 600;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  transition: 
+    color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+  position: relative;
+}
+nav a:hover, nav a:focus {
+  color: #1e293b;
+  background: linear-gradient(90deg, #38bdf8 60%, #a5f3fc 100%);
+  box-shadow: 0 2px 12px #38bdf855;
+  outline: none;
 }
 
-nav a:hover {
-  color: #38bdf8;
-}
-
+/* --- Main Content --- */
 main {
   flex: 1;
-  padding: 2rem 1rem;
+  padding: 2.5rem 1.5rem;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 2.5rem auto 0 auto;
+  background: rgba(255,255,255,0.55);
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(30,41,59,0.18);
+  backdrop-filter: blur(8px);
+  transition: background 0.3s;
+  position: relative;
+  z-index: 1;
+  animation: fadeInMain 0.8s cubic-bezier(.4,0,.2,1);
+}
+@keyframes fadeInMain {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: translateY(0);}
 }
 
+/* --- Footer --- */
 .app-footer {
-  background: #1e293b;
+  background: rgba(30,41,59,0.85);
   color: #fff;
   text-align: center;
-  padding: 0.7rem 0;
-  font-size: 0.95rem;
+  padding: 1rem 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  border-top: 1.5px solid #38bdf8;
+  box-shadow: 0 -2px 16px rgba(30,41,59,0.10);
+  /* Glassmorphism */
+  backdrop-filter: blur(6px);
 }
 
-@media (max-width: 600px) {
+/* --- Buttons (for use in your components) --- */
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(90deg, #38bdf8 60%, #0ea5e9 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px #38bdf855;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+.btn:hover, .btn:focus {
+  background: linear-gradient(90deg, #0ea5e9 60%, #38bdf8 100%);
+  color: #1e293b;
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 700px) {
   .app-header, main {
     padding: 1rem;
   }
+  main {
+    margin-top: 1.2rem;
+    border-radius: 14px;
+  }
   .logo-text {
-    font-size: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.7rem 0.5rem;
+  }
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+  .logo-text {
+    font-size: 0.95rem;
+  }
+  main {
+    padding: 0.7rem;
+    margin-top: 0.7rem;
+  }
+  nav a {
+    margin-left: 0.7rem;
+    font-size: 0.97rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
+
+/* --- Extra: Subtle Animations for "Wow" --- */
+@media (hover: hover) {
+  .app-header {
+    animation: headerGlow 2.5s infinite alternate;
+  }
+  @keyframes headerGlow {
+    0% { box-shadow: 0 4px 24px #38bdf822; }
+    100% { box-shadow: 0 4px 32px #38bdf866; }
   }
 }
